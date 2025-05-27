@@ -13,10 +13,10 @@
 <body>
     <script>
         function getComputerChoice() {
-            const RandomNum = Math.floor(Math.random() * 3);
-            if (RandomNum === 0) {
+            const computerChoice = Math.floor(Math.random() * 3);
+            if (computerChoice === 0) {
                 return "rock";
-            } else if (RandomNum === 1) {
+            } else if (computerChoice === 1) {
                 return "paper";
             } else {
                 return "scissors";
@@ -29,14 +29,31 @@
             let humanChoice = prompt("Choose rock, paper, or scissors");
             console.log(humanChoice);
         }
-        getHumanChoice(); // Call the function so the prompt appears when the page loads
 
         let playerScore = 0;
         let computerScore = 0;
         
-        function playRound() {
-
+        function playRound(humanChoice, computerChoice) {
+            getHumanChoice
+            humanChoice = humanChoice/toLowerCase();
+            if (humanChoice == computerChoice) {
+                return "It's a tie!";
+            } else if (
+                (humanChoice === "rock" && computerChoice === "scissors") ||
+                (humanCoice === "paper" && computerChoice === "rock") ||
+                (humanChoice === "scissors" && computerChoice === "paper") 
+            ) {
+                playerScore++;
+                return "You win!";
+                
+            } else { 
+                 computerScore++;
+                return "Computer wins!"
+            }
+            console.log(computerScore)
+            console.log(playerScore)
         }
+        
 
     </script>
 </body>
