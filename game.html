@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<!-- steps: -->
- <!-- 1. user imputs between 3 choices: rock, paper or sissors 
-    2. A function returns the computers choice
-    3. the choice is compared to the user to determin which one wins.
-    victory! -->
 <body>
     <script>
         function getComputerChoice() {
@@ -22,7 +17,6 @@
                 return "scissors";
             }
         }
-        console.log(getComputerChoice());
             function getHumanChoice() {
             let humanChoice = prompt("Choose rock, paper, or scissors");
             humanChoice = humanChoice.toLowerCase();
@@ -32,32 +26,40 @@
         let playerScore = 0;
         let computerScore = 0;
         
-        function playRound(humanChoice, computerChoice) {
-            if (!humanChoice) {
-                humanChoice = getHumanChoice();
+        function playGame() {
+            function playRound() {
+                let humanChoice = getHumanChoice();
+                let computerChoice = getComputerChoice();
+                if (humanChoice == computerChoice) {
+                    alert("It's a tie!");
+                } else if (
+                    (humanChoice === "rock" && computerChoice === "scissors") ||
+                    (humanChoice === "paper" && computerChoice === "rock") ||
+                    (humanChoice === "scissors" && computerChoice === "paper") 
+                ) {
+                    playerScore++;
+                    alert("You win!"); 
+                } else {
+                    computerScore++;
+                    alert("Computer wins!");
+                }
+                console.log("Computer: " + computerScore);
+                console.log("Player: " + playerScore);
             }
-            if (humanChoice == computerChoice) {
-                return "It's a tie!";
-            } else if (
-                (humanChoice === "rock" && computerChoice === "scissors") ||
-                (humanChoice === "paper" && computerChoice === "rock") ||
-                (humanChoice === "scissors" && computerChoice === "paper") 
-            ) {
-                playerScore++;
-                alert("You win!"); 
-                
-            } else { 
-                 computerScore++;
-                alert("Computer wins!");
+            playerScore = 0;
+            computerScore = 0;
+            while (playerScore < 2 && computerScore < 2) {
+                playRound();
             }
-            console.log(computerScore)
-            console.log(playerScore)
+            if (playerScore === 2) {
+                alert("You are the champion!");
+            } else {
+                alert("Computer is the champion!");
+            }
         }
-        console.log(computerScore);
-        console.log(playerScore);
-        
+        playGame()
     
-        playRound()
+    
 
     </script>
 </body>
